@@ -1,0 +1,219 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manasa Reddy | Portfolio</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
+
+    body{
+      background:#f4f4f4;
+      color:#333;
+    }
+
+    header{
+      background:#1e3a8a;
+      color:white;
+      text-align:center;
+      padding:40px;
+    }
+
+    nav{
+      background:#111827;
+      padding:15px;
+      text-align:center;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin:0 15px;
+    }
+
+    section{
+      max-width:1000px;
+      margin:auto;
+      padding:40px 20px;
+    }
+
+    h2{
+      margin-bottom:20px;
+      color:#1e3a8a;
+    }
+
+    .card{
+      background:white;
+      padding:20px;
+      margin-bottom:20px;
+      border-radius:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .skills span{
+      display:inline-block;
+      background:#1e3a8a;
+      color:white;
+      padding:8px 15px;
+      border-radius:20px;
+      margin:5px;
+    }
+
+    form{
+      display:flex;
+      flex-direction:column;
+    }
+
+    input, textarea{
+      margin:10px 0;
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:5px;
+    }
+
+    button{
+      padding:12px;
+      background:#1e3a8a;
+      color:white;
+      border:none;
+      border-radius:5px;
+      cursor:pointer;
+    }
+
+    button:hover{
+      background:#2563eb;
+    }
+
+    #message{
+      margin-top:10px;
+      font-weight:bold;
+    }
+
+    footer{
+      background:#111827;
+      color:white;
+      text-align:center;
+      padding:15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Manasa Reddy</h1>
+  <p>Full Stack Developer | CSE Student</p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#education">Education</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>
+      I am a passionate Computer Science student interested in Full Stack Development,
+      Flutter apps, and modern web technologies.
+    </p>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+
+  <div class="card">
+    <h3>B.Tech - Computer Science Engineering</h3>
+    <p>CGPA: 9.26</p>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+
+  <div class="card skills">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>Node.js</span>
+    <span>React</span>
+    <span>Flutter</span>
+    <span>MongoDB</span>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="card">
+    <h3>Blood Donation Platform</h3>
+    <p>Full stack platform connecting donors and recipients.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+
+  <div class="card">
+    <form id="contactForm">
+
+      <input type="text" id="name" placeholder="Your Name" required>
+
+      <input type="email" id="email" placeholder="Your Email" required>
+
+      <textarea id="messageText" rows="5" placeholder="Your Message"></textarea>
+
+      <button type="submit">Send Message</button>
+
+    </form>
+
+    <p id="message"></p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Manasa Reddy</p>
+</footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e){
+
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("messageText").value;
+
+  const response = await fetch("http://localhost:5000/contact",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+      name,
+      email,
+      message
+    })
+  });
+
+  const data = await response.json();
+
+  document.getElementById("message").innerText = data.message;
+
+  document.getElementById("contactForm").reset();
+});
+</script>
+
+</body>
+</html>
