@@ -22,7 +22,7 @@ A responsive personal portfolio website built using HTML, CSS, JavaScript, and N
 ```bash
 portfolio-project/
 │
-├── index.html
+├── protfolio.html
 ├── server.js
 ├── package.json
 └── node_modules/
@@ -48,7 +48,7 @@ npm install
 node server.js
 ```
 
-4. Open `index.html` in browser or use Live Server.
+4. Open `protfolio.html` in browser or use Live Server.
 
 ## Backend
 
